@@ -1,0 +1,86 @@
+Morbus Gaucher
+ICD-10 Code
+
+E75.2
+Synonyme
+Mangel an Glucocerebrosidase
+Mangel an saurer Beta-Glukozidase
+
+
+Alter
+jedes Alter
+
+Vererbung
+autosomal-rezessiv
+
+
+Symptome
+
+Splenomegalie (Milzvergrößerung),
+Hepatomegalie (Lebervergrößerung),
+Thrombozytopenie,
+Blutungen,
+Neigung zu Blutergüssen,
+Erschöpfung,
+Fieber,
+Diarrhö (Durchfall)
+
+Morbus Gaucher
+Die Gaucher-Krankheit ist eine genetisch bedingte lysosomale Speicherkrankheit, die autosomal-rezessiv vererbt wird, verursacht durch eine Mutation des GBA-Gens, das für das Enzymprotein Glukozerebrosidase codiert.
+
+Es gibt mehrere Formen der Krankheit: Typ 1, nicht neuronopathisch, mit chronischem Verlauf (schätzungsweise 1 Fall pro 50.000 Geburten), akuter Typ 2, neuronopathische infantile Form (schätzungsweise 1 Fall pro 100.000 Geburten), Typ 3, subakute Neuronopathie (schätzungsweise 1 Fall pro 100.000 Geburten).
+
+Die Krankheit wurde nach dem Arzt Philippe Gaucher benannt, der im Jahr 1882 als Erster die Symptome beschrieb. Die Gaucher-Krankheit wird durch die Ablagerung von Glucosylceramid in den Zellen verursacht. Es ist ein selten auftretender, erblich bedingter Mangel am Enzym Glukozerebrosidase, der zu einer Anreicherung der Substanz Glucosylceramid in verschiedenen Teile des Körpers wie Milz, Leber und Knochen führt.
+
+Die Gaucher-Krankheit ist sehr schwer zu erkennen und viele Betroffene werden erst sehr spät diagnostiziert (wenn die Krankheit bereits fortgeschritten ist) oder wurden nie diagnostiziert.Es wird geschätzt, dass weltweit etwa 72.000 bis 80.000 Menschen an Morbus Gaucher leiden, so der Artikel
+
+Global Epidemiology of Gaucher Disease: an Updated Systematic Review and Meta-analysis”, veröffentlicht im Journal of Pediatric Hematology/Oncology.
+
+Ursachen von Morbus Gaucher
+Morbus Gaucher (MG) gehört zur Gruppe der lysosomalen Speichererkrankungen, von denen etwa 60 bekannte Typen existieren. Diese genetisch bedingte Erkrankung wird autosomal-rezessiv vererbt.
+
+Die Ursache für Morbus Gaucher ist eine genetische Mutation, die zu einer verminderten Aktivität des Enzyms β-Glukozerebrosidase führt. Infolgedessen sammelt sich Glukozerebrosid in Zellen, Geweben und Organen an.
+
+Je nach Vorhandensein oder Fehlen neurologischer Symptome werden drei Haupttypen von Morbus Gaucher unterschieden.
+
+Die Krankheit wurde nach dem Arzt Philippe Gaucher benannt, der im Jahr 1882 als Erster die Symptome beschrieb.
+
+Diagnose von Morbus Gaucher
+Die Diagnose von Morbus Gaucher kann aufgrund allgemeiner Symptome (Erschöpfung), hämatologischer Symptome (Thrombozytopenie), viszeraler Symptome (vergrößerte Leber und Milz), Knochenerkrankungen (einschließlich pathologischer Frakturen) oder Störungen des Nervensystems und der Sehkraft gestellt werden.
+
+Zu Beginn des diagnostischen Prozesses gehören die Anamnese, die körperliche Untersuchung, Labortests und bildgebende Verfahren. Diese Schritte helfen dabei, andere Ursachen der Symptome auszuschließen und pathologische Veränderungen zu bestätigen, die typisch für diese Erkrankung sind.
+
+Die endgültige Diagnose von Morbus Gaucher umfasst die Messung der Aktivität der Beta-Glukozerebrosidase in peripheren Blutleukozyten oder Hautfibroblasten sowie genetische Tests, um Mutationen im GBA1-Gen zu bestätigen. Weitere Tests können typische Blutgerinnungs- und hämatologische Auffälligkeiten zeigen, die mit der Erkrankung in Zusammenhang stehen.
+
+Symptome von Morbus Gaucher
+Die klinische Ausprägung variiert bei den Patienten und hängt vom Typ des Morbus Gaucher ab.
+
+Typ 1 – Die häufigste Form, oft als „Erwachsenenform“ bezeichnet. Sie kann in jedem Alter auftreten, tritt jedoch meist in der Jugend auf. Die verbleibende Enzymaktivität bei Patienten des Typs 1 macht den Krankheitsverlauf weniger aggressiv als bei anderen Typen. Zu den Symptomen gehören Thrombozytopenie, Splenomegalie, Anämie, Hepatomegalie und Knochenerkrankungen (z. B. Knochennekrose), die zu Erschöpfung, Neigung zu Blutungen, häufigen Infektionen, Bauchschwellungen, Wachstumsstörungen, Knochenschmerzen und Hautverfärbungen führen. Es treten keine neurologischen Symptome auf.
+Typ 2 – Akute infantile neuronopathische Form. Sie umfasst sowohl viszerale als auch neurologische Symptome wie Schielen, Krampfanfälle, fortschreitende psychomotorische Verschlechterung, Hirnstammdysfunktion (was zu einem geschwächten Saug- und Schluckreflex führt), Muskeltonusstörungen, Gesichtsdysmorphie und Thrombozytopenie. Es treten auch generalisierte Schwellungen, geringe motorische Aktivität und Wachstumsstörungen auf. In ihren schwersten Formen kann der Morbus Gaucher sogar bereits im fetalen Stadium tödlich sein.
+Typ 3 – Subakute (juvenile) neuronopathische Form, die als Zwischenform zwischen Typ 1 und Typ 2 angesehen wird. Sie wird weiter unterteilt in die Subtypen IIIa, IIIb und IIIc. IIIa ist mit fortschreitender Myotonie und geistiger Behinderung verbunden, IIIb mit isolierter supranuklearer Blicklähmung und IIIc, die mit dem homozygoten D409H-Genotyp assoziiert ist, zeichnet sich durch eine Herzklappenverkalkung, Hornhauttrübung und horizontale Blickstörung aus.
+Prognose von Morbus Gaucher
+Bei Patienten mit Morbus Gaucher vom Typ 2 führen die Symptome häufig zum Tod innerhalb der ersten zwei Lebensjahre. Personen mit Typ 3 sterben, wenn sie unbehandelt bleiben, in der Regel innerhalb weniger Jahre (unbehandelter Morbus Gaucher Typ 3b führt dazu, dass die Hälfte der betroffenen Personen vor dem 12. Lebensjahr verstirbt).
+
+Im Gegensatz dazu ist die Prognose für Patienten mit Typ 1 gut – bei richtiger Behandlung können sie eine Lebensdauer erreichen, die mit der gesunder Personen vergleichbar ist, obwohl eine kontinuierliche Behandlung erforderlich bleibt.
+
+Behandlung von Morbus Gaucher
+Für die Typen 1 und 3 des Morbus Gaucher stehen Enzymersatztherapie (ERT) (Imiglucerase/Velaglucerase) und Substratreduktionstherapie (SRT) (Miglustat) zur Verfügung. SRT ist eine Alternative für Patienten, die keine ERT erhalten können oder eine milde/mittelschwere Form des Morbus Gaucher Typ 1 haben. Diese Therapie wirkt, indem sie die Produktion von Glukozylceramid hemmt.
+
+Die Enzymersatztherapie (ERT) wird alle zwei Wochen durch langsame intravenöse Infusionen über die Lebenszeit des Patienten verabreicht. Je nach Alter und Zustand des Patienten liegt die Dosis zwischen 15 und 60 U/kg Körpergewicht. Die ERT sollte während der Schwangerschaft nicht abgebrochen werden, da sie das Risiko einer Fehlgeburt und von Blutungskomplikationen bei der Geburt verringert.
+
+Diese Therapien sind bei Morbus Gaucher Typ 2 nicht wirksam. Die Hauptziele der Behandlung sind, das Fortschreiten der Krankheit zu stoppen, hämatologische Parameter zu verbessern, Hepatomegalie und Splenomegalie zu verringern, Knochenerkrankungen zu lindern und die allgemeine Lebensqualität zu steigern.
+
+Jeder Patient sollte in einem Referenzzentrum in der Nähe seines Wohnorts behandelt werden und regelmäßige Kontrolluntersuchungen oder Folgetermine wahrnehmen.
+
+Vorkommen von Morbus Gaucher
+Morbus Gaucher ist panethnisch, was bedeutet, dass er in allen ethnischen Gruppen auftritt. Die geschätzte Prävalenz liegt bei 1 von 50.000 bis 200.000 Menschen, obwohl spezifischere Daten je nach Quelle variieren. In westlichen Ländern wird die Prävalenz in der allgemeinen Bevölkerung auf 1 von 40.000 bis 60.000 Lebendgeburten geschätzt. Die Inzidenz der neuronopathischen Formen (die schwersten Fälle) wird auf 1 von 500.000 Personen geschätzt.
+
+Einige weltweite Zahlen:
+
+Polen: Derzeit gibt es mehrere Dutzend diagnostizierte Fälle von Morbus Gaucher.
+In Deutschland liegt die Prävalenz laut Studien bei etwa 30 Fällen pro eine Million Einwohner. Bei einer Bevölkerung von rund 83 Millionen kann geschätzt werden, dass etwa 2.490 Menschen im Land mit der Diagnose Morbus Gaucher leben.
+USA: 6000 diagnostizierte Patienten, laut der National Organization for Rare Disorders.
+Brasilien: 1234 Patienten, wie in der Studie “Gaucher disease in Brazil: a comprehensive 16 year retrospective study on survival, cost, and treatment insights”, veröffentlicht von Frontiers in Pharmacology, berichtet wird.
+Kolumbien: Zum 31. Dezember 2023 wurden insgesamt 204 Personen mit der Diagnose Morbus Gaucher an die kolumbianische Behörde CAC account für hochkostenträchtige Behandlungen gemeldet.. Dies entspricht einer groben Prävalenz von 0,39 Fällen pro 100.000 Einwohner, was etwas höher ist als frühere Berichte aus Lateinamerika.
+Lateinamerika: laut derNIH gibt es keine präzise, einzelne Zahl für die genaue Anzahl der Morbus-Gaucher-Patienten in Lateinamerika. Studien legen jedoch nahe, dass Morbus Gaucher in der Region relativ häufig vorkommt, mit einer Prävalenz von 0,15 bis 0,32 Fällen pro 100.000 Einwohner.
+Aufgrund der diagnostischen Herausforderungen, die mit seltenen Erkrankungen verbunden sind, könnten die tatsächlichen Zahlen jedoch unterschätzt werden.

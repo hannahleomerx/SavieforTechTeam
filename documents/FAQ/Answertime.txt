@@ -1,0 +1,23 @@
+---
+question: "Wann werde ich eine Antwort erhalten?"
+category: "Dauer"
+tags:
+  - "Antwortzeit"
+  - "Bearbeitungsfrist"
+  - "Rückmeldung"
+---
+Q: Wann werde ich eine Antwort erhalten? / Wie lange dauert die Analyse? / Wann bekomme ich eine Rückmeldung?
+A: Wir bemühen uns, dir **innerhalb von wenigen Wochen** nach Erhalt deines vollständigen Datensatzes zu antworten. Bei komplexen Fällen oder hoher Nachfrage kann es manchmal etwas länger dauern.
+
+---
+
+Q: Warum kann es manchmal länger dauern?
+A:
+- **Hohe Nachfrage**: Wir erhalten täglich eine große Anzahl von Anfragen.
+- **Komplexität der Analyse**: Einige Fälle erfordern eine detailliertere Prüfung, insbesondere bei komplexen seltenen Erkrankungen.
+- **Zusätzliche Informationen**: In manchen Fällen bitten wir dich, weitere Angaben nachzureichen.
+
+---
+
+Q: Bekommt jeder eine Antwort? / Bekomme ich eine Antwort? / Bekomme ich eine Rückmeldung?
+A: Ja, **alle Patienten** erhalten eine Rückmeldung von uns, unabhängig davon, ob wir in deinem Fall helfen können oder nicht.

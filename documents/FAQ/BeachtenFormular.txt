@@ -1,0 +1,13 @@
+---
+question: "Worauf solltest du achten?"
+category: "Vorbereitung"
+tags:
+  - "Tipps"
+  - "Datenqualität"
+  - "Symptome"
+---
+Q: Worauf solltest du achten?
+A:
+- **Nimm dir Zeit**: Um alle relevanten Informationen und Symptome genau anzugeben, nimm dir eine ruhige Minute.
+- **Detaillierte Angaben**: Je ausführlicher deine Angaben sind, desto präziser kann unsere Analyse erfolgen.
+- **Medizinische Befunde**: Füge gerne PDFs und Scans an, damit wir eine bessere Datenanalyse durchführen können.

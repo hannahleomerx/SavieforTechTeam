@@ -1,0 +1,17 @@
+---
+question: "Kann ich für einen Angehörigen, Freund oder mein Kind ein Formular ausfüllen?"
+category: "Formular"
+tags:
+  - "Angehörige"
+  - "Einverständnis"
+  - "Datenqualität"
+  - "Kontaktangaben"
+---
+Q: Kann ich für einen Angehörigen, Freund oder mein Kind ein Formular ausfüllen?
+A: Ja, du kannst das Formular auch für Angehörige, Freunde oder dein Kind ausfüllen.
+
+Q: Was solltest du dabei beachten?
+A:
+- **Einverständnis**: Stelle sicher, dass die betroffene Person – bei Erwachsenen – ihr Einverständnis gibt. Für Kinder übernimmst du als Erziehungsberechtigter diese Verantwortung.
+- **Datenqualität**: Je präziser und vollständiger die Angaben zu Symptomen und bisherigen medizinischen Berichten sind, desto genauer kann unsere Analyse erfolgen.
+- **Kontaktangaben**: Nutze deine eigenen Kontaktdaten, falls es sich um ein Kind handelt, damit wir dich direkt kontaktieren können.

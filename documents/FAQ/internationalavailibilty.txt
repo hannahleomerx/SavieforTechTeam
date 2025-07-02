@@ -1,0 +1,21 @@
+---
+question: "Kann ich Saventic Care auch außerhalb von Deutschland nutzen?"
+category: "Verfügbarkeit"
+tags:
+  - "International"
+  - "Länder"
+  - "Einschränkungen"
+---
+Q: Kann ich Saventic Care auch außerhalb von Deutschland nutzen?
+A: Ja, Saventic Care ist international verfügbar.
+
+Q: Wo ist Saventic Care derzeit verfügbar?
+A:
+- Deutschland
+- Polen
+- Kanada
+- Brasilien
+- Lateinamerika
+
+Q: Gibt es Einschränkungen?
+A: Unsere Dienstleistungen stehen dir in den genannten Ländern vollständig zur Verfügung. Wir arbeiten daran, unser Netzwerk weltweit weiter auszubauen.

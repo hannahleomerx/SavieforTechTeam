@@ -1,0 +1,11 @@
+---
+question: "Wer kann Saventic Care nutzen?"
+category: "Zielgruppe"
+tags:
+  - "Diagnose"
+  - "Behandlung"
+  - "Seltene Erkrankungen"
+  - "Unterstützung"
+---
+Q: Wer kann Saventic Care nutzen? / Wer kann die Plattform nutzen? / Wer kann die Analyse anfragen?
+A: Saventic Care ist die richtige Plattform für Menschen, die Unterstützung bei der Diagnose oder Behandlung einer seltenen Erkrankung suchen.

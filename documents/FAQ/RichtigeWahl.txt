@@ -1,0 +1,13 @@
+---
+question: "Wann ist Saventic Care die richtige Wahl für dich?"
+category: "Eignung"
+tags:
+  - "Beschwerden"
+  - "Seltene Erkrankungen"
+  - "Experten"
+---
+Q: Wann ist Saventic Care die richtige Wahl für dich?  
+A:
+- **Länger anhaltende Beschwerden**: Du bist seit mehr als 6 Monaten von beunruhigenden Symptomen betroffen, deren Ursache bislang ungeklärt ist.  
+- **Verdacht auf eine seltene Erkrankung**: Du oder dein Arzt vermutet, dass es sich um eine seltene Erkrankung handeln könnte.  
+- **Suche nach Experten**: Du benötigst Hilfe bei der Suche nach einem geeigneten Facharzt oder einer spezialisierten Klinik.  

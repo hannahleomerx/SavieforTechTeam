@@ -1,0 +1,11 @@
+---
+question: "Wann ist Saventic Care nicht geeignet?"
+category: "Eignung"
+tags:
+  - "Notfälle"
+  - "Allgemeine Erkrankungen"
+---
+Q: Wann ist Saventic Care nicht geeignet?  
+A:
+- **Notfälle**: Bei akuten Symptomen oder medizinischen Notfällen wende dich bitte an den Notdienst oder die Notaufnahme.  
+- **Allgemeine Erkrankungen**: Unsere Plattform ist auf seltene Erkrankungen spezialisiert und nicht die richtige Anlaufstelle für kurzzeitige oder häufige Symptome.  

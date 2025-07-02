@@ -1,0 +1,15 @@
+---
+question: "Was ist Saventic Care und wie hilft es Patienten?"
+category: "Produktinfo"
+tags:
+  - "Plattform"
+  - "Diagnose"
+  - "Unterstützung"
+---
+Q: Was ist Saventic Care und wie hilft es Patienten?
+A: Saventic Care ist eine innovative Online-Plattform, die Menschen unterstützt, die möglicherweise unter seltenen Erkrankungen leiden, jedoch bisher noch keine spezialisierte Diagnose erhalten haben. Die Plattform hilft Patienten, indem sie:
+
+- **Symptomerfassung**: Über einen personalisierten Fragebogen werden relevante Symptome systematisch erfasst.
+- **Datenanalyse**: Die eingegebenen Informationen und optional bereitgestellte medizinische Unterlagen (z. B. Befunde, Scans) werden von spezialisierten Algorithmen und Experten ausgewertet.
+- **Expertenvernetzung**: Patienten erhalten konkrete Empfehlungen für Fachärzte und spezialisierte Kliniken, die auf seltene Erkrankungen spezialisiert sind.
+- **Ressourcen & Support**: Zusätzlich werden weiterführende Informationsmaterialien und unterstützende Netzwerke vermittelt, um den Patienten im weiteren Diagnose- und Behandlungsprozess zu begleiten.

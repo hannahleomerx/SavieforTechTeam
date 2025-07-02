@@ -1,0 +1,42 @@
+---
+question: "Welche seltenen Erkrankungen kann Saventic Care aktuell analysieren?"
+category: "Anwendungsbereich"
+tags:
+  - "Gaucher-Krankheit"
+  - "Fabry-Krankheit"
+  - "Hereditäres Angioödem"
+  - "Paroxysmale nächtliche Hämoglobinurie"
+  - "Amyloidose ATTR"
+  - "Kutanes T-Zell-Lymphom"
+  - "Primäre Immundefizienz"
+  - "Morbus Castleman"
+  - "Mukopolysaccharidose Typ I"
+  - "Mukopolysaccharidose Typ II"
+  - "Mukopolysaccharidose Typ III"
+  - "Niemann-Pick-Krankheit"
+  - "Amyloidose AL"
+  - "EGPA / Churg-Strauss-Syndrom"
+  - "Hypophosphatasie"
+  - "Mangel an saurer lysosomaler Lipase"
+---
+Q: Welche seltenen Erkrankungen kann Saventic Care aktuell analysieren?  
+A: Wir analysieren derzeit die folgenden seltenen Erkrankungen:
+
+- Gaucher-Krankheit  
+- Fabry-Krankheit  
+- Hereditäres Angioödem (HAE)  
+- Paroxysmale nächtliche Hämoglobinurie (PNH)  
+- Amyloidose ATTR  
+- Kutanes T-Zell-Lymphom (CTCL)  
+- Primäre Immundefizienz (PID)  
+- Morbus Castleman  
+- Mukopolysaccharidose Typ I (Hurler-Syndrom)  
+- Mukopolysaccharidose Typ II (Hunter-Syndrom)  
+- Mukopolysaccharidose Typ III (Sanfilippo-Krankheit)  
+- Niemann-Pick-Krankheit  
+- Amyloidose AL  
+- Eosinophile Granulomatose mit Polyangiitis (EGPA) / Churg-Strauss-Syndrom  
+- Hypophosphatasie  
+- Mangel an saurer lysosomaler Lipase  
+
+Unser Angebot wird kontinuierlich erweitert, sodass wir in Zukunft noch mehr seltene Erkrankungen abdecken können.  

@@ -1,0 +1,30 @@
+---
+question: "Wie funktioniert Saventic Care?"
+category: "Funktionsweise"
+tags:
+  - "Fragebogen"
+  - "Datenanalyse"
+  - "Prozess"
+  - "Experten"
+---
+Q: Wie funktioniert Saventic Care?
+A: Mithilfe eines personalisierten Fragebogens und optional bereitgestellter medizinischer Daten analysiert Saventic Care Symptome und identifiziert potenzielle Hinweise auf seltene Erkrankungen. Die Plattform erleichtert den Zugang zu Fachärzten, spezialisierten Zentren und weiteren unterstützenden Ressourcen.
+
+Q: Wie funktioniert die Analyse?
+A:
+1. **Medizinische Informationen übermitteln**
+   Du füllst ein ausführliches Online-Formular aus (ähnlich einem ärztlichen Anamnesebogen) und beschreibst deine Symptome und Krankengeschichte. Optional kannst du Laborbefunde, genetische Tests, medizinische Bilder oder Fotos von sichtbaren Symptomen hochladen – je mehr Details, desto besser.
+
+2. **Überprüfung durch unsere Koordinatoren**
+   Nach Eingang deiner Daten prüft ein Koordinator deine Angaben. Er meldet sich bei Rückfragen oder fordert zusätzliche Unterlagen an, um sicherzustellen, dass alle Informationen vollständig und korrekt sind.
+
+3. **Analyse durch KI und erfahrene Fachärzte**
+   Unsere Algorithmen werten deine Daten gemeinsam mit einem Team spezialisierter Fachärzte aus Bereichen wie Genetik, Hämatologie, Immunologie und Rheumatologie. Sie tauschen sich bei Bedarf untereinander aus, um eine umfassende Einschätzung zu ermöglichen.
+
+4. **Überweisung an ein spezialisiertes Diagnosezentrum**
+   Besteht der Verdacht auf eine seltene Erkrankung, empfehlen wir dir ein Referenzzentrum mit ausgewiesener Expertise. Dort kannst du weiterführende Untersuchungen durchführen lassen und erhältst eine umfassende Betreuung.
+
+5. **Diagnosetests bei Verdacht auf eine seltene Erkrankung**
+   Falls ein Facharzt den Verdacht bestätigt, unterstützen wir dich bei der Organisation gezielter Tests (z. B. Dry Blood Spot Test), teilweise sogar als Home-Test. Dein behandelnder Arzt erklärt dir Ablauf und Terminvereinbarung und begleitet dich durch den Prozess.
+
+*Hinweis:* Die Analyse ist für dich kostenfrei, dauert je nach Komplexität einige Wochen und wird von uns aktiv begleitet.

@@ -1,0 +1,23 @@
+---
+question: "Sind meine Daten sicher?"
+category: "Datenschutz"
+tags:
+  - "DSGVO"
+  - "Verschlüsselung"
+  - "Vertraulichkeit"
+  - "Datenlöschung"
+---
+Q: Sind meine Daten sicher?
+A: Ja, deine Daten sind bei Saventic Care absolut sicher und werden stets vertraulich behandelt. Wir erfüllen alle gesetzlichen Anforderungen gemäß der Datenschutz-Grundverordnung (DSGVO) und legen höchsten Wert auf Datensicherheit.
+
+Q: Wie schützt Saventic Care deine Daten?
+A:
+- **Verschlüsselung**: Deine medizinischen Daten werden ausschließlich über gesicherte, passwortgeschützte und verschlüsselte elektronische Kommunikationskanäle übermittelt.
+- **Vertraulichkeit**: Alle Untersuchungsergebnisse werden mit größter Sorgfalt und Vertraulichkeit behandelt.
+- **Ärztliche Schweigepflicht**: Alle involvierten Fachpersonen unterliegen der gesetzlichen ärztlichen Schweigepflicht.
+
+Q: Welche Rechte hast du bezüglich deiner Daten?
+A:
+- **Datenlöschung**: Du kannst jederzeit verlangen, dass deine Daten von unserer Plattform vollständig gelöscht werden.
+- **Wie beantrage ich die Löschung?** Sende eine E-Mail mit deinem Wunsch an info@saventiccare.de, und wir bearbeiten deinen Antrag schnell und unkompliziert.
+- **Kontrolle**: Du behältst die volle Kontrolle über deine persönlichen und medizinischen Informationen.

@@ -1,0 +1,13 @@
+---
+question: "Was sind die Hauptziele von Saventic Care?"
+category: "Ziele"
+tags:
+  - "Diagnose"
+  - "Bewusstseinsbildung"
+  - "Patientenunterstützung"
+---
+Q: Was sind die Hauptziele von Saventic Care?
+A:
+- **Schnellere Diagnosen**: Unterstützung bei der Identifikation und Vermittlung an geeignete Spezialisten oder Kliniken.
+- **Bewusstseinsbildung**: Förderung des Verständnisses für seltene Erkrankungen.
+- **Patientenunterstützung**: Bereitstellung von Informationen, Facharztkontakten und individuellen Empfehlungen.

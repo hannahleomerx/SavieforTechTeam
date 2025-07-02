@@ -1,0 +1,10 @@
+---
+question: "Wie lange dauert das Ausfüllen des Formulars?"
+category: "Dauer"
+tags:
+  - "Formular"
+  - "Zeitaufwand"
+  - "Ausfüllzeit"
+---
+Q: Wie lange dauert das Ausfüllen des Formulars?
+A: Das Ausfüllen unseres Formulars dauert etwa **10–20 Minuten**, je nachdem, wie viele Symptome du beschreiben möchtest.
