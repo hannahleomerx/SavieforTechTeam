@@ -16,11 +16,11 @@ import urllib.parse
 
 st.markdown("""
 <style>
-/* Verhindert, dass Buttons umbrechen */
+/* prevents buttons from breaking */
 .stButton>button {
   white-space: nowrap;
 }
-/* Optional: etwas Abstand und fixierte Position */
+/* Optional: distance and fixed position */
 .back-btn-container {
   position: absolute;
   top: 1rem;
@@ -29,7 +29,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
+# static translations for welcome message, prompts and ui in all supported languages
 I18N = {
     "de": {
         "welcome_title": "Hi, ich bin Savie",
@@ -321,7 +321,7 @@ from orphadata_phenotype_tool import OrphadataPhenotypeTool
 import html
 
 # -------------------------------------------------------------------------------
-# 1) Patterns für persönliche Diagnose-Anfragen (erste Person, verfeinert)
+# 1) Patterns for personal diagnosis block (first person)
 # -------------------------------------------------------------------------------
 PERSONAL_MEDICAL_PATTERNS = {
     "de": re.compile(
@@ -380,7 +380,7 @@ PERSONAL_MEDICAL_PATTERNS = {
 }
 
 # -------------------------------------------------------------------------------
-# 2) Exception-Patterns: „Ich habe … ausgefüllt …“ o. Ä.
+# 2) Exception-Patterns for block: „Ich habe … ausgefüllt …“ o. Ä. -> needs translation for pl, es, pt
 # -------------------------------------------------------------------------------
 EXCEPTION_PATTERNS = {
     "de": re.compile(r"\bich habe\b.*\b ausgefüllt\b", re.IGNORECASE),
@@ -394,31 +394,31 @@ FORM_URL = "https://tst.saventiccare.de/patientendaten-formular/"
 SUPPORT_MAIL = "info@saventiccare.de"
 
 
-# --- State-Schema für den Workflow-Graphen ---
+# --- State-Scheme for Workflow-Graph ---
 class State(TypedDict):
     messages: Annotated[list, add_messages]
 
-# ─── Callback für FAQ-Buttons ──────────────────────────────────────────
+# ─── Callback for FAQ-Buttons ──────────────────────────────────────────
 def _handle_faq(q: str):
-    # 1) als User‐Nachricht speichern
+    # 1) save as user message
     st.session_state.messages.append({"role": "user", "content": q})
-    # 2) FAQ abfragen
+    # 2) FAQ query
     result = st.session_state.faq_tool.run({
         "query": q,
         "language": st.session_state.lang,
         "category": None,
         "k": 2
     })
-    # 3) Antwort speichern
+    # 3) save answer
     answer = result["answer"].strip()
     st.session_state.messages.append({"role": "assistant", "content": answer})
-    # 4) neue Suggestions setzen
+    # 4) propose new suggestions
     st.session_state.suggestions = result.get("suggestions", [])
 
 
 
 
-# Extrahieren
+# Extract
 def extract_disease_term(query: str, lang: str) -> str:
     """
     Finds and returns the first disease name in `query`, based on language-specific regexes.
@@ -436,7 +436,7 @@ def extract_disease_term(query: str, lang: str) -> str:
     return m.group(0) if m else query
 
 
-# --- OpenAI 1.x-kompatible Übersetzungsfunktion ---
+# --- OpenAI Translation Function for non static text ---
 def translate_with_openai(text: str, target_lang: str) -> str:
     name_map = {
         "DE": "Deutsch",
@@ -485,7 +485,7 @@ def translate_term(term: str, target_lang: str) -> str:
             messages=[{"role": "user", "content": prompt}],
             temperature=0.1
         )
-        # Gib nur die rohe Antwort zurück
+        # only give back raw response
         return response.choices[0].message.content.strip()
     except Exception as e:
         print("Übersetzungsfehler:", e)
@@ -499,13 +499,13 @@ def chatbot(state: State):
     lang = st.session_state.lang
     texts = I18N[lang]
 
-    # Ausnahme-Pattern für ausgefülltes Formular
+    # Exeption pattern for filled patient form
     exc_pattern = EXCEPTION_PATTERNS.get(lang)
     if exc_pattern and exc_pattern.search(query):
         result = st.session_state.faq_tool.run(query)
         return {"messages": [AIMessage(content=result["answer"].strip())]}
 
-    # Persönliche Diagnose-Anfrage
+    # Personal diagnosis block and return with link to patient form and mail adress of S-Care Team
     personal_pattern = PERSONAL_MEDICAL_PATTERNS.get(lang, PERSONAL_MEDICAL_PATTERNS["de"])
     if personal_pattern.search(query):
         btn_form = (
@@ -535,7 +535,7 @@ def chatbot(state: State):
     # Rare Disease vs. Service Mode in chatbot()
     # 1) Rare Disease Mode: **immer** Orphadata, nie FAQ
     if st.session_state.mode == "rare":
-        # --- 1a) Extrahiere den Kerndisease-Term aus der Nutzereingabe ---
+        # --- 1a) Extract the Keydisease-Term from user input ---
         def extract_disease_term(query: str, lang_code: str) -> str:
             patterns = {
                 "de": re.compile(
@@ -551,24 +551,24 @@ def chatbot(state: State):
             m = pat.search(query)
             return m.group(0) if m else query  # Fallback: ganzer Query
 
-        # Roh-Query
+        # Raw-Query
         query = st.session_state.messages[-1]["content"] if st.session_state.messages else ""
 
-        # Extrahiere Term
+        # Extract Term
         disease_term = extract_disease_term(query, st.session_state.lang)
         st.session_state._last_disease_name = disease_term
 
-        # --- 1b) Übersetze Term ins Englische ---
+        # --- 1b) Translate Term to english ---
         eng_term = translate_with_openai(disease_term, "EN")
 
-        # --- 1c) Orphadata-Abfrage mit englischem Term ---
+        # --- 1c) Orphadata query with english term ---
         api_response_en = st.session_state.orphadata_tool.run(eng_term)
 
-        # --- 1d) ORPHAcode extrahieren ---
+        # --- 1d) Extract ORPHAcode ---
         m = re.search(r"ORPHAcode:\s*(\d+)", api_response_en)
         st.session_state._last_orpha_number = m.group(1) if m else None
 
-        # --- 1e) Antwort zurück in die Nutzersprache übersetzen ---
+        # --- 1e) Translate term back to user language ---
         target_lang = st.session_state.lang.upper()
         if target_lang != "EN":
             api_response = translate_with_openai(api_response_en, target_lang)
@@ -588,13 +588,13 @@ def chatbot(state: State):
         }
         result = st.session_state.faq_tool.run(tool_input)
 
-        # 2) Antwort‐Bubble
+        # 2) Answer‐Bubble
         msgs = [AIMessage(content=result["answer"].strip())]
 
-        # 3) Buttons für Suggestions als eigene Messages
+        # 3) Buttons for suggestions as own messages
         if result.get("suggestions"):
             for sug in result["suggestions"]:
-                # wir markieren jeden Button-Call als eigenes AIMessage-Objekt
+                # we mark every button call as own AIMessage object
                 msgs.append(
                     AIMessage(content=f"__Suggest__: {sug}")
                 )
@@ -603,7 +603,7 @@ def chatbot(state: State):
 
         return {"messages": msgs}
 
-    # 3) Kein Modus gewählt
+    # 3) No mode selected
     else:
         return {"messages": [AIMessage(content=texts["select_mode_prompt"])]}
 
@@ -621,7 +621,7 @@ def _is_no_info(response: str, lang_code: str) -> bool:
         return response.strip() == "No information found for that disease."
 
 
-# Session-State Defaults (läuft nur einmal)
+# Session-State Defaults (runs only once)
 if "initialized" not in st.session_state:
     st.session_state.initialized = True
     st.session_state.graph_initialized = False
@@ -633,7 +633,7 @@ if "initialized" not in st.session_state:
     st.session_state.last_suggestion = None
 
 
-# Diese Defaults immer prüfen
+# always check the defaults
 if "show_phenos" not in st.session_state:
     st.session_state.show_phenos = False
 if "subtype_map" not in st.session_state:
@@ -655,7 +655,7 @@ if "service_query" not in st.session_state:
 if "suggestions" not in st.session_state:
     st.session_state.suggestions = []
 if "next_query" not in st.session_state:
-    st.session_state.next_query = None           # gemerkte Suggestion
+    st.session_state.next_query = None           # noticed Suggestion
 
 config = {"configurable": {"thread_id": "1"}}
 
@@ -708,7 +708,7 @@ def main():
     # CSS Styling
     st.markdown("""
         <style>
-        /* Bestehende Styles */
+        /* Existing Styles */
         [data-testid="stAppViewContainer"] {
           background: linear-gradient(180deg,#D5F5D1 0%,#B3E7F2 100%);
         }
@@ -736,7 +736,7 @@ def main():
         .assistant-row   { justify-content: flex-start; }
         .avatar          { width: 40px; height: 40px; border-radius: 50%; margin: 0 10px; }
         
-      /* Sprechblasen */
+      /* Speech-Bubbles */
       .message {
         max-width: 60%;
         padding: 10px 15px;
@@ -764,7 +764,7 @@ def main():
         cursor: pointer;
       }
     
-      /* Eingabefeld */
+      /* Input field */
       .message-field {
         background: #495054;
         color: #fff;
@@ -774,7 +774,7 @@ def main():
         width: 100%;
       }
     
-      /* Tabs-Text auf Weiß setzen */
+      /* Text in Tabs white */
       [data-testid="stTabs"] [role="tab"],
       [data-testid="stTabs"] [role="tabpanel"] {
         color: #fff !important;
@@ -829,7 +829,7 @@ def main():
                 st.session_state._last_disease_name = None
         st.markdown("---")
 
-        # 1) Zuerst alle bisherigen Nachrichten rendern
+        # 1) Rendering of all previous messages
     for msg in st.session_state.messages:
         content = msg["content"]
         role = msg.get("role", "assistant")
@@ -843,7 +843,7 @@ def main():
                </div>''', unsafe_allow_html=True)
     # ─────────── Service-Mode ───────────
     if st.session_state.mode == "service":
-        # 1) Zeige Chat-History
+        # 1) Show chat-history
         for msg in st.session_state.service_history:
             role = msg["role"]
             avatar = "USerIcon.png" if role == "user" else "SavieIcon.png"
@@ -856,7 +856,7 @@ def main():
                 <div class="message {msg_cls}">{content}</div>
               </div>''', unsafe_allow_html=True)
 
-        # 2) Suggestions-Buttons aus der letzten Antwort
+        # 2) Suggestion buttons as last answer
         if st.session_state.suggestions:
             st.markdown("**Weitere Fragen:**")
             for i, sug in enumerate(st.session_state.suggestions):
@@ -865,16 +865,16 @@ def main():
                     st.session_state.suggestions = []
                     st.rerun()
 
-        # 3) Einziger Chat-Input für Service-Mode
+        # 3) Chat-Input only for service mode
         if st.session_state.next_query:
             prompt = st.session_state.next_query
             st.session_state.next_query = None
         else:
             prompt = st.chat_input(texts["chat_input_placeholder"], key="service_input")
 
-        # 4) Sobald prompt da ist: verarbeite es
+        # 4) As soon as prompt is recieved, process it
         if prompt:
-            # A) User-Bubble an History hängen
+            # A) put user bubble at the end of the history
             st.session_state.service_history.append({"role": "user", "content": prompt})
             st.markdown(f'''
               <div class="message-row user-row">
@@ -882,7 +882,7 @@ def main():
                 <div class="message user-message">{html.escape(prompt)}</div>
               </div>''', unsafe_allow_html=True)
 
-            # B) Typing-Indikator
+            # B) Typing indikator
             tp = st.empty()
             tp.markdown(f'''
               <div class="message-row assistant-row">
@@ -890,7 +890,7 @@ def main():
                 <div class="message assistant-message">{texts["typing"]}</div>
               </div>''', unsafe_allow_html=True)
 
-            # C) FAQ-Tool aufrufen
+            # C) FAQTool query
             result = st.session_state.faq_tool.run({
                 "query": prompt,
                 "language": st.session_state.lang,
@@ -899,7 +899,7 @@ def main():
             })
             tp.empty()
 
-            # D) Assistant-Bubble an History hängen
+            # D) put assistant bubble at the end of chat history
             answer = result["answer"].strip()
             st.session_state.service_history.append({"role": "assistant", "content": answer})
             st.markdown(f'''
@@ -908,31 +908,31 @@ def main():
                 <div class="message assistant-message">{answer}</div>
               </div>''', unsafe_allow_html=True)
 
-            # E) Neue Suggestions merken
+            # E) Remember new suggestions
             st.session_state.suggestions = result.get("suggestions", [])
 
-            # F) sofort neu rendern, damit alles erscheint
+            # F) Instant rendering so everything is showing up together
             st.rerun()
 
-        # 5) Danach auf keinen Fall in den Rest des Scripts fallen lassen
+        # 5) Don´t fall in the rest of the script after it 
         return
 
-    # Klick auf "Mehr Infos" – Haupt-Phänotypen oder Subtypen holen
+    # Click on more info – get main phenotypes and subtypes
 
     if st.session_state.mode == "rare" and st.session_state._last_orpha_number:
-        # Öffne links-bündigen Container
+        # open left aligned container
         st.markdown('<div class="left-align-container">', unsafe_allow_html=True)
 
         # 1) Show more symptoms Button
         if st.button(texts["more_info_btn"], key="btn_show_phenos"):
-            # 1a) Haupt-Phänotypen abrufen
+            # 1a) Query main phenotypes
             main_raw = st.session_state.phenotype_tool.get_phenotypes(
                 st.session_state._last_orpha_number,
                 lang_code=st.session_state.lang.upper()
             )
 
             if main_raw:
-                # 1b) Wenn Daten vorhanden: direkt rendern
+                # 1b) If data is existing, instant rendering
                 cats = {"Very frequent": [], "Frequent": [], "Occasional": []}
                 for p in main_raw:
                     freq = p.get("HPOFrequency", "").lower()
@@ -965,11 +965,11 @@ def main():
                             st.markdown("\n".join(lines))
 
             else:
-                # 1c) Subtypen ermitteln über Cross-Reference
+                # 1c) get subtypes via cross reference
                 code = st.session_state._last_orpha_number
                 lang = st.session_state.lang.upper()
 
-                # HCH-IDs per JSON abrufen
+                # HCH-IDs via JSON query
                 resp = requests.get(
                     f"https://api.orphadata.com/rd-classification/orphacodes/{code}/hchids",
                     params={"language": lang},
@@ -978,13 +978,13 @@ def main():
                 )
                 hch_list = resp.json().get("data", {}).get("results", [])
 
-                # Alle 'childs'-Codes sammeln
+                # get all 'childs'codes 
                 child_codes = {c for h in hch_list for c in h.get("childs", [])}
 
                 if not child_codes:
                     st.error("Für diesen Code wurden keine Subtypen gefunden.")
                 else:
-                    # Alle 'childs'-Codes sammeln
+                    # get all 'childs' codes
                     child_codes = set()
                     for h in hch_list:
                         child_codes.update(h.get("childs", []))
@@ -992,10 +992,10 @@ def main():
                     if not child_codes:
                         st.error("Für diesen Code wurden keine Subtypen gefunden.")
                     else:
-                        # Per Cross-Reference-Endpoint die Namen holen
+                        # recieve name via cross reference
                         subtype_map = {}
                         for sub_code in child_codes:
-                            # 1) Raw-Response holen
+                            # 1) get raw response
                             cr_resp = requests.get(
                                 f"https://api.orphadata.com/rd-cross-referencing/orphacodes/{sub_code}",
                                 params={"language": lang},  # das ist EN
@@ -1004,7 +1004,7 @@ def main():
                             )
                             cr = cr_resp.json().get("data", {}).get("results", {})
 
-                            # 2) Englischen Namen extrahieren
+                            # 2) extract english term
                             name_en = (
                                     cr.get("Name")
                                     or cr.get("preferredTerm")
@@ -1012,22 +1012,22 @@ def main():
                                     or str(sub_code)
                             )
 
-                            # 3) Übersetzen in die Nutzersprache
+                            # 3) Translate into user language
                             target = st.session_state.lang.upper()
                             if target != "EN":
                                 name = translate_with_openai(name_en, target)
                             else:
                                 name = name_en
 
-                            # 4) Eintrag in Map
+                            # 4) Put in map
                             subtype_map[name] = str(sub_code)
 
-                    # Session-State für Dropdown aktivieren
+                    # activiate session state for Dropdown 
                     st.session_state.subtype_map = subtype_map
                     st.session_state.ask_subtype = True
 
         # ───────────────────────────────────────────────────────────────
-        # 2) Wenn Subtypen da sind: Dropdown in einem Formular + anzeigen
+        # 2) When subtypes are recieved, user choice for the one the user is interested in
         # ───────────────────────────────────────────────────────────────
         if st.session_state.get("ask_subtype", False):
             # Bot-Nachricht
@@ -1088,16 +1088,16 @@ def main():
                 st.session_state.ask_subtype = False
                 st.session_state.subtype_map = None
 
-        # Schließe links-bündigen Container
+        # Close left aligned container
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # Eingabe und Streaming
+        # Inpit and Streaming
     if prompt := st.chat_input(texts["chat_input_placeholder"], key="main_chat_input"):
 
-        #1) Direkt die User-Message im Session-State speichern
+        #1) Save user message instantly in session state
         st.session_state.messages.append({"role": "user", "content": prompt})
 
-        # 1a) UND sofort manuell rendern, damit sie direkt sichtbar ist:
+        # 1a) instant render to show it directly
         st.markdown(f'''
           <div class="message-row user-row">
             <img src="https://raw.githubusercontent.com/hannahleomerx/savie/main/USerIcon.png" class="avatar">
@@ -1107,13 +1107,13 @@ def main():
 
         # ---------------------------------------------------------------
 
-        # 2) Rare-Disease-Modus: Extrahiere ggf. den rohen Begriff
+        # 2) Rare-Disease-Mode: extract the raw term
         if st.session_state.mode == "rare":
             st.session_state._last_disease_name = extract_disease_term(
                 prompt, st.session_state.lang
             )
 
-        # 3) Zeige „Savie tippt…“
+        # 3) Show tipping indicator
         tp = st.empty()
         tp.markdown(f'''
             <div class="message-row assistant-row">
@@ -1121,7 +1121,7 @@ def main():
               <div class="message assistant-message">{texts["typing"]}</div>
             </div>''', unsafe_allow_html=True)
 
-        # 4) Führe deine Chat-Logik aus (streaming)
+        # 4) Streaming
         user_texts = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
         full = ""
         for update in st.session_state.graph.stream({"messages": user_texts}, config, stream_mode="updates"):
@@ -1129,19 +1129,20 @@ def main():
             for ai in msgs:
                 full += ai.content
 
-        # 5) Entferne den „tippt“-Hinweis
+        # 5) Delete the tipping indicator
         tp.empty()
 
-        # 6) Bot-Antwort speichern
+        # 6) Save bot answer
         st.session_state.messages.append({"role": "assistant", "content": full})
 
-        # ORPHAcode nach dem Streaming extrahieren
+        # extract ORPHAcode after Streaming 
         #m = re.search(r"ORPHAcode:\s*(\d+)", full)
         #st.session_state._last_orpha_number = m.group(1) if m else None
 
-        # 7) Zum Schluss neu rendern, damit alles zusammen angezeigt wird
+        # 7) At the end render everything again so it´s shown all together
         st.rerun()
 
 
 if __name__ == "__main__":
+
     main()
