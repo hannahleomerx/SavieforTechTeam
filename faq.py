@@ -1,6 +1,6 @@
 __import__('pysqlite3')
 import sys
-sys.modules['sqlite3']=sys.modules.pop('pysqlite3')
+sys.modules['sqlite3']=sys.modules.pop('pysqlite3') #delete if tested locally, only relevant for streamlit implementation when its not local
 
 from typing import Type, Optional, Dict, Any, List
 from pydantic import BaseModel, Field
@@ -233,6 +233,7 @@ class FaqTool(BaseTool):
             "sources": sources,
             "suggestions": suggestions
         }
+
 
 
 
