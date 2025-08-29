@@ -84,7 +84,7 @@ class FaqTool(BaseTool):
             return_source_documents=True,
             chain_type_kwargs=chain_kwargs
         )
-        # merken wir uns für Suggestions
+        # remenber for suggestions
         self._retriever = retriever
 
     def _run(
@@ -94,7 +94,7 @@ class FaqTool(BaseTool):
             language: Optional[str] = None,
             category: Optional[str] = None
     ) -> Dict[str, Any]:
-        # 0) Sprache erkennen, falls nicht gesetzt
+        # 0) Identify language, if not set
         if language is None:
             try:
                 detected = detect(query)
@@ -103,7 +103,7 @@ class FaqTool(BaseTool):
             if detected in SUPPORTED_LANGS:
                 language = detected
 
-        # 1) Query säubern & Frageformat
+        # 1) Clean up query & format of question
         user_query = query.strip()
         if not user_query.endswith("?"):
             user_query += "?"
@@ -111,14 +111,14 @@ class FaqTool(BaseTool):
         if "saventic care" not in user_query.lower():
             qa_query = f"Saventic Care: {user_query}"
 
-        # 2) QA-Chain konfigurieren & ausführen
+        # 2) Configure Q&A-Chain
         self._configure_chain(language, category, k)
         qa_res = self._qa_chain({"query": qa_query})
         raw_answer = qa_res["result"]
         answer = re.sub(r'(?m)^A:\s*', "", raw_answer).strip()
         sources = [doc.metadata for doc in qa_res["source_documents"]]
 
-        # 3) Vorschläge holen mit k*5
+        # 3) get suggestion with k*5
         filters = {
             **({"language": language} if language else {}),
             **({"category": category} if category else {})
@@ -129,7 +129,7 @@ class FaqTool(BaseTool):
         })
         docs = suggest_retriever.get_relevant_documents(user_query)
 
-        # 4) Paraphrase-basierte, zufällige 3 Vorschläge
+        # 4) 3 suggestions based on paraphrases
         cand_questions = []
         for d in docs:
             p = d.metadata.get("paraphrase", "").strip()
@@ -168,7 +168,7 @@ class FaqTool(BaseTool):
             language: Optional[str] = None,
             category: Optional[str] = None
     ) -> Dict[str, Any]:
-        # 0) Sprache erkennen, falls nicht gesetzt
+        # 0) Identify language, if not set
         if language is None:
             try:
                 detected = detect(query)
@@ -177,7 +177,7 @@ class FaqTool(BaseTool):
             if detected in SUPPORTED_LANGS:
                 language = detected
 
-        # 1) Query säubern & Frageformat
+        # 1) Clean up query & format of question
         user_query = query.strip()
         if not user_query.endswith("?"):
             user_query += "?"
@@ -185,14 +185,14 @@ class FaqTool(BaseTool):
         if "saventic care" not in user_query.lower():
             qa_query = f"Saventic Care: {user_query}"
 
-        # 2) QA-Chain konfigurieren & asynchron ausführen
+        # 2) Configure Q&A-Chain
         self._configure_chain(language, category, k)
         qa_res = await self._qa_chain.arun({"query": qa_query})
         raw_answer = qa_res["result"]
         answer = re.sub(r'(?m)^A:\s*', "", raw_answer).strip()
         sources = [doc.metadata for doc in qa_res["source_documents"]]
 
-        # 3) Vorschläge holen mit k*5
+        # 3) get suggestion with k*5
         filters = {
             **({"language": language} if language else {}),
             **({"category": category} if category else {})
@@ -203,7 +203,7 @@ class FaqTool(BaseTool):
         })
         docs = suggest_retriever.get_relevant_documents(user_query)
 
-        # 4) Paraphrase-basierte, zufällige 3 Vorschläge
+        # 4) suggestions based on paraphrases
         cand_questions = []
         for d in docs:
             p = d.metadata.get("paraphrase", "").strip()
@@ -233,6 +233,7 @@ class FaqTool(BaseTool):
             "sources": sources,
             "suggestions": suggestions
         }
+
 
 
 
