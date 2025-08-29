@@ -17,7 +17,7 @@ FAQ_DIR     = "documents/FAQ"
 PERSIST_DIR = "./chroma_langchain_db"
 COLLECTION  = "example_collection"
 
-# Mehrsprachigkeit
+# Muli languages
 languages = {
     "de": "German",
     "en": "English",
@@ -30,7 +30,7 @@ languages = {
 llm        = ChatOpenAI(temperature=0.1)
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
-# --- Chains definieren ---
+# --- Define Chains ---
 translation_chain = LLMChain(
     llm=llm,
     prompt=PromptTemplate(
@@ -50,7 +50,7 @@ Gib jede Paraphrase in einer neuen Zeile aus.
     )
 )
 
-# --- Einlesen & Paraphrasieren - Antworten übersetzen---
+# --- Fill and paraphrase - translate answers---
 docs = []
 for fname in os.listdir(FAQ_DIR):
     if not fname.endswith(".txt"):
@@ -69,49 +69,49 @@ for fname in os.listdir(FAQ_DIR):
 
 
 
-    # --- Body säubern (entfernt führende Leerzeilen) ---
+    # --- Clean up Body (deletes leading blank lines) ---
     body = body.lstrip()
 
-    # --- In mehrere Q:-Segmente splitten ---
-    # jedes Segment beginnt mit einer Zeile, die mit "Q:" anfängt
+    # --- Splitting in several Q segments ---
+    # every segement starts with a line starting with Q:
     segments = re.split(r'(?m)^(?=Q:)', body)
 
     for seg in segments:
-        # entferne komplett leere Zeilen
+        # delete completly blank lines
         lines = [l for l in seg.splitlines() if l.strip()]
         if not lines or not lines[0].startswith("Q:"):
             continue
 
-        # erste Zeile ist Q: Frage(n)
+        # first line is Q: Question
         raw_question = lines[0][2:].strip()
-        # Rest ist die Antwort
+        # rest is the answer
         raw_answer = "\n".join(lines[1:]).strip()
 
-        # Varianten zulassen, getrennt durch Slash
+        # allow variants, split up by slash
         raw_variants = [q.strip() for q in raw_question.split("/") if q.strip()]
 
         for base_question in raw_variants:
-            # --- Hier kommt dein bestehender Übersetzungs-/Paraphrasen-Loop hin ---
+            # --- translation paraphrase loop ---
             for code, name in languages.items():
-                # Frage übersetzen (für Deutsch nur Original)
+                # Translate question (german only for orginal)
                 q_translated = (
                     translation_chain.run(text=base_question, target_language=name).strip()
                     if code != "de" else base_question
                 )
-                # Antwort übersetzen (für Deutsch nur Original)
+                # Translate answer (german only for original)
                 a_translated = (
                     translation_chain.run(text=raw_answer, target_language=name).strip()
                     if code != "de" else raw_answer
                 )
-                # Paraphrasen erzeugen...
+                # create paraphrases
                 para_text = paraphrase_chain.run(question=q_translated, language=name)
                 variants = [q_translated] + [
                     p.strip("- ").strip() for p in para_text.splitlines() if p.strip()
                 ]
 
-                # letztlich Document-Objekte anlegen
+                # create document files
                 for variant in variants:
-                    # Für Deutsch das Original, sonst die übersetzte Antwort verwenden
+                    # For german the original, other languages translated
                     answer_text = raw_answer if code == "de" else a_translated
                     content = f"Q: {variant}\nA: {answer_text}"
                     doc_meta = {
@@ -126,15 +126,16 @@ for fname in os.listdir(FAQ_DIR):
                         id=str(uuid4())
                     ))
 
-# --- Neuer Flat-Index via from_documents() ---
-# 1) Verzeichnis ./chroma_langchain_db VORHER löschen!
+# ---new flat index via from_documents() ---
+# 1) Delete Repo ./chroma_langchain_db before
 store = Chroma.from_documents(
     documents=docs,
     embedding=embeddings,
     persist_directory=PERSIST_DIR,
     collection_name=COLLECTION,
-    # Flat-Index aktivieren
+    # Activate flat-index
     collection_metadata={"index_factory": "flat"}
 )
+
 
 print(f"Ingested {len(docs)} FAQ-Varianten in Collection '{COLLECTION}'.")
