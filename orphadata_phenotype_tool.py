@@ -38,7 +38,7 @@ class OrphadataPhenotypeTool(BaseTool):
         except ValueError:
             return []
 
-        # hier nehmen wir den korrekten Pfad
+        # get the correct path
         assoc = payload.get("Disorder", {}) \
                        .get("HPODisorderAssociation", [])
 
@@ -47,7 +47,7 @@ class OrphadataPhenotypeTool(BaseTool):
             hpo = entry.get("HPO", {})
             hid  = hpo.get("HPOId")
             name = hpo.get("HPOTerm")
-            freq = entry.get("HPOFrequency")  # jetzt HPOFrequency statt Frequency
+            freq = entry.get("HPOFrequency")  
             if hid and name and freq:
                 phenotypes.append({
                     "HPOId": hid,
@@ -56,3 +56,4 @@ class OrphadataPhenotypeTool(BaseTool):
                 })
 
         return phenotypes
+
