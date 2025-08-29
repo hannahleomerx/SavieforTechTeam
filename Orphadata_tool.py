@@ -27,14 +27,14 @@ class RareDiseaseTool(BaseTool):
         self._base_url = base_url.rstrip("/")
 
     def _run(self, name: str) -> str:
-        # Name URL-kodieren und Sprache aus Session-State
+        # Name coding url, language from session state
         encoded_name = urllib.parse.quote(name)
         lang_code = st.session_state.lang.upper()
 
-        # Endpoint zusammenbauen
+        # create api endpoint
         endpoint = f"{self._base_url}/rd-cross-referencing/orphacodes/names/{encoded_name}"
 
-        # HTTP-Request mit Timeout- und Connection-Error-Behandlung
+        # HTTP-Request with Timeout- und Connection-Error-treatment
         try:
             resp = requests.get(
                 endpoint,
@@ -45,7 +45,7 @@ class RareDiseaseTool(BaseTool):
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
             return self._service_unavailable_message()
 
-        # HTTP-Fehler behandeln
+        # treat HTTP-Failure
         status = resp.status_code
         if status == 404:
             return self._no_info_message()
@@ -54,18 +54,18 @@ class RareDiseaseTool(BaseTool):
         if 500 <= status < 600:
             return self._service_unavailable_message()
 
-        # JSON parsen
+        # parse JSON 
         try:
             json_data = resp.json()
         except ValueError:
             return self._service_unavailable_message()
 
-        # Ergebnisse extrahieren
+        # Extract results
         raw_results = json_data.get("data", {}).get("results")
         if raw_results is None:
             return self._no_info_message()
 
-        # In Liste normalisieren
+        # normalize as a list
         if isinstance(raw_results, dict):
             data_list = [raw_results]
         elif isinstance(raw_results, list):
@@ -77,19 +77,21 @@ class RareDiseaseTool(BaseTool):
             return self._no_info_message()
 
         first = data_list[0]
-        # Versuch, das Ergebnis zu formatieren
+        # try formatting the results
         try:
             result_str = self._format_result(first)
         except Exception:
             return self._service_unavailable_message()
 
-        # Bei Erfolg nur das formatierte Ergebnis zurückgeben
+        # return results if succsessfull
         return result_str
 
     async def _arun(self, name: str) -> str:
         return self._run(name)
 
-    def _format_result(self, record: Dict[str, Any]) -> str:
+# get labels in english, translation in agent
+
+   def _format_result(self, record: Dict[str, Any]) -> str:
         """
         Antwort immer mit englischen Labels – Übersetzung im Agent!
         """
@@ -114,3 +116,4 @@ class RareDiseaseTool(BaseTool):
     def _service_unavailable_message(self) -> str:
         """Englische Standardmeldung für 'Service nicht verfügbar'."""
         return "The service is currently unavailable. Please try again later."
+
